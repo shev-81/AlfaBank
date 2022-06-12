@@ -1,0 +1,18 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /app
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+integrations:
+  openexchangerates-service:
+    url: https://openexchangerates.org/api/historical/
+  gif-service:
+    url: https://tenor.googleapis.com/v2/
+  secret:
+    exchange_id: c370cc9943974bf2881bc719c6062724
+    gif_id: AIzaSyBEdAzYsnOCOB4LbpQf7vlj8M7oNvbznjg

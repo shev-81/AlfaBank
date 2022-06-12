@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+<div class="container" ng-controller="indexController">
+    <div>
+        <h3>Введите название валюты:</h3>
+        <form novalidate ng-submit="load()">
+            <input class="form-control" type="text" placeholder="RUB" ng-model="currency.namecurse">
+            <label>Название валюты</label>
+            <p></p>
+            <BUTTON class="btn btn-primary" type="submit">Узнать курс</BUTTON>
+        </form>
+    </div>
+    <div ng-show="isHaveResponse()">
+        <div ng-show="isCourseValue()">
+            <p></p>
+            <h3>Курс {{cName}} к USD составляет - {{cExchangeRate}}.</h3>
+            <p>В сравнении со вчерашним днем курс изменился на  - {{cValue}}.</p>
+            <h2>Картинка при повышении курса</h2>
+            <img id="previewUp_gif" src="" alt="" style="width:220px;height:164px;">
+        </div>
+        <div ng-show="!isCourseValue()">
+            <p></p>
+            <h3>Курс {{cName}} к USD составляет - {{cExchangeRate}}.</h3>
+            <p>В сравнении со вчерашним днем курс изменился на  - {{cValue}}.</p>
+            <h2>Картинка при понижении курса</h2>
+            <img id="previewDown_gif" src="" alt="" style="width:220px;height:164px;">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
