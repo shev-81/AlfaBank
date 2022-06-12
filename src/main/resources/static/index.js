@@ -35,20 +35,23 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
     $scope.tenorCallback_search = function (responsetext)
     {
         var response_objects = JSON.parse(responsetext);
-        let top_2_gifs = response_objects["results"];
-        document.getElementById("previewUp_gif").src = top_2_gifs[0]["media_formats"]["nanogif"]["url"];
-        document.getElementById("previewDown_gif").src = top_2_gifs[1]["media_formats"]["nanogif"]["url"];
+        let top_1_gifs = response_objects["data"];
+        document.getElementById("previewUp_gif").src = top_1_gifs[0]["images"]["original"]["url"];
+        // document.getElementById("previewDown_gif").src = top_2_gifs[1]["media_formats"]["nanogif"]["url"];
         return;
     }
 
     $scope.grab_data = function (key)
     {
         var apikey = key;
-        var clientkey = "my_test_app";
-        var lmt = 2;
-        var search_term = "excited";
-        var search_url = "https://tenor.googleapis.com/v2/search?q=" + search_term + "&key=" +
-            apikey +"&client_key=" + clientkey +  "&limit=" + lmt;
+        var lmt = 1;
+        var offset = "5";
+        if($scope.cValue<0){
+            var search_url = "https://api.giphy.com/v1/gifs/search?api_key=" + apikey + "&q=broke&limit=" + lmt + "&offset" + offset + "&rating=g&lang=en";
+
+        }else{
+            var search_url = "https://api.giphy.com/v1/gifs/search?api_key=" + apikey + "&q=rich&limit=" + lmt + "&offset" + offset + "&rating=g&lang=en";
+        }
         $scope.httpGetAsync(search_url, $scope.tenorCallback_search);
         return;
     }

@@ -25,20 +25,10 @@
         </form>
     </div>
     <div ng-show="isHaveResponse()">
-        <div ng-show="isCourseValue()">
             <p></p>
             <h3>Курс {{cName}} к USD составляет - {{cExchangeRate}}.</h3>
-            <p>В сравнении со вчерашним днем курс изменился на  - {{cValue}}.</p>
-            <h2>Картинка при повышении курса</h2>
-            <img id="previewUp_gif" src="" alt="" style="width:220px;height:164px;">
-        </div>
-        <div ng-show="!isCourseValue()">
-            <p></p>
-            <h3>Курс {{cName}} к USD составляет - {{cExchangeRate}}.</h3>
-            <p>В сравнении со вчерашним днем курс изменился на  - {{cValue}}.</p>
-            <h2>Картинка при понижении курса</h2>
-            <img id="previewDown_gif" src="" alt="" style="width:220px;height:164px;">
-        </div>
+        <p>В сравнении со вчерашним днем курс изменился на: <b> {{cValue}}.</b></p>
+            <img id="previewUp_gif" src="" alt="" style="width:400px;height:400px;">
     </div>
 </div>
 
